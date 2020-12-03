@@ -23,7 +23,7 @@ defmodule Hyphen8.Engine do
            Enum.map(    data[:words], fn word -> 
            String.split(word, ~r/\w/, include_captures: true, trim: true)end)
         |> Enum.map(fn x -> Enum.join(x, "0")end)
-        |> Enum.map(fn word -> "#{word}0" end)
+        |> Enum.map(fn word -> "0#{word}" end)
         )
     end
 
