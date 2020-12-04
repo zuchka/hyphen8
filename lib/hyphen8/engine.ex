@@ -51,8 +51,6 @@ defmodule Hyphen8.Engine do
         |> Enum.map(fn [indices, tuples] -> Enum.map(indices, fn index      ->
            Enum.map(tuples, fn {a, b} -> {(a + index), b}         end)end)end)
         |> Enum.flat_map(&List.flatten(&1))
-        
-
         end)
         )
     end
