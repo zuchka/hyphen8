@@ -61,8 +61,8 @@ defmodule Hyphen8.Engine do
         |> Enum.map(     fn tuple    -> Tuple.to_list(tuple)                 end)
         |> Enum.reject(  fn [  a,_b] -> a == 1                               end)
         |> Enum.group_by(fn [  a,_b] -> a                                    end)
-        |> Enum.map(     fn { _k, v} -> 
-           Enum.max_by(v,fn [ _a, b] -> b end) end)
+        |> Enum.map(     fn { _k, v} ->
+           Enum.max_by(v,fn [ _a, b] -> b end)                               end)
         |> Enum.reject(  fn [ _a, b] -> rem(b, 2) == 0                       end)
         )
         end)
