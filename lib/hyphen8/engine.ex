@@ -12,7 +12,7 @@ defmodule Hyphen8.Engine do
 
     def parse_words(string) do
         Keyword.new
-        |> Keyword.put(:words, String.split(string, ~r/\s|\\n|\\r|\W|_/, trim: true))
+        |> Keyword.put(:words, String.split(string, ~r/\s|\\n|\\r|\\t|\W|_/, trim: true))
     end
 
     def parse_characters(data) do
