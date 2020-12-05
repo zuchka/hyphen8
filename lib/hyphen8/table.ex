@@ -1,11 +1,5 @@
 defmodule Hyphen8.Table do
 
-  def test do
-[
-    [~r{0g0o}, [{0, 1}]],
-]
-end
-
 def main do
   [
     [~r/^0a0c0h0(?!$)/, [{6, 4}]],
