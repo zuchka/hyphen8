@@ -4,6 +4,22 @@
 
 Hyphen8 is a pure Elixir implementation of the Knuth-Liang Hyphenation Algorithm. That algorithm formed the basis of Franklin Mark Liang's [1983 Stanford Dissertation, _WORD HY-PHEN-A-TION BY COM-PU-TER_](http://www.tug.org/docs/liang/liang-thesis.pdf). It remains the standard hyphenation method in TeX.
 
+## Usage
+
+Pass a string to `Hyphen8.Engine.main()`:
+
+```command
+iex> Hyphen8.Engine.main("containerization orchestration platform")
+```
+
+You will receive the hyphenated string:
+
+```
+"con-tainer-iza-tion orches-tra-tion plat-form"
+```
+
+They current version will not reconstruct punctuation. To customize the string and word splitting, adjust the regular expressions in `Hyphen8.Engine.parse_words()` and `Hyphen8.Engine.parse_characters()`.
+
 ## History of the Knuth-Liang Algorithm
 
 Liang built a program, Patgen, which developed a large pattern table. He says the following about the resulting algorithm:
