@@ -9,13 +9,13 @@ Hyphen8 is a pure Elixir implementation of the Knuth-Liang Hyphenation Algorithm
 Pass a string to `Hyphen8.Engine.main()`:
 
 ```command
-iex> Hyphen8.Engine.main("containerization orchestration platform")
+iex> Hyphen8.Engine.main("let's hyphenate containerization orchestration platform")
 ```
 
 You will receive the hyphenated string:
 
 ```
-"con-tainer-iza-tion orches-tra-tion plat-form"
+"let s hy-phen-ate con-tainer-iza-tion or-ches-tra-tion plat-form"
 ```
 
 The current version will not reconstruct punctuation. To customize the string and word splitting, adjust the regular expressions in `Hyphen8.Engine.parse_words()` and `Hyphen8.Engine.parse_characters()`.

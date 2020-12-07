@@ -20,6 +20,7 @@ defmodule Hyphen8.Engine do
        |> Keyword.put( :characters, Enum.map(data[:words],
           &String.split(&1, ~r/\w/, include_captures: true, trim: true))
        |> Enum.map(&Enum.join(&1, "0"))
+       |> Enum.map(fn word -> "0#{word}0" end)
        )
    end
 
@@ -59,7 +60,8 @@ defmodule Hyphen8.Engine do
        Keyword.update!(data, :coordinates, fn list -> 
           Enum.map(list, &Enum.uniq(&1)
        |> Enum.map(     fn tuple    -> Tuple.to_list(tuple) end)
-       |> Enum.reject(  fn [  a,_b] -> a == 1               end) 
+       |> Enum.reject(  fn [  a,_b] -> a == 0               end)
+       |> Enum.reject(  fn [  a,_b] -> a == 2               end)
        |> Enum.group_by(fn [  a,_b] -> a                    end) 
        |> Enum.map(     fn { _k, v} ->
           Enum.max_by(v,fn [ _a, b] -> b end)               end)
