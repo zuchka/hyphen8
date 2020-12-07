@@ -18,7 +18,7 @@ You will receive the hyphenated string:
 "con-tainer-iza-tion orches-tra-tion plat-form"
 ```
 
-They current version will not reconstruct punctuation. To customize the string and word splitting, adjust the regular expressions in `Hyphen8.Engine.parse_words()` and `Hyphen8.Engine.parse_characters()`.
+The current version will not reconstruct punctuation. To customize the string and word splitting, adjust the regular expressions in `Hyphen8.Engine.parse_words()` and `Hyphen8.Engine.parse_characters()`.
 
 ## History of the Knuth-Liang Algorithm
 
