@@ -56,7 +56,7 @@ defmodule Hyphen8.Engine do
        |> Stream.map(fn [match, regex] -> Enum.zip(     match, regex          )
        |> Stream.map(&Tuple.to_list/1    )
        |> Stream.map(fn [indices, tuples] -> Enum.map(indices, fn index      ->
-          Enum.map(tuples, fn {a, b} -> {(a + index), b}         end)end)end)
+          Enum.map(tuples, fn {a, b} -> {(a + index), b}           end)end)end)
        |> Enum.flat_map(&List.flatten/1)
        end)
 
@@ -85,7 +85,6 @@ defmodule Hyphen8.Engine do
        |> Stream.map(fn [word, coords] -> [List.to_tuple(word), coords]      end)
        |> Stream.map(fn [word, coords] -> Hyphen8.Recurse.main(word, coords) end)
        |> Stream.map(&Enum.reject(&1, fn x -> x == "0" end))
-       |> Stream.map(&Enum.join/1                          )
-       |> Enum.join(" "                                    )
+       |> Enum.join(" ")
    end
 end
