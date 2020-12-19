@@ -1,4 +1,5 @@
 defmodule Hyphen8.Engine do
+@moduledoc false
 
    def main(string) do
        string

@@ -1,4 +1,5 @@
 defmodule Hyphen8.Table do
+@moduledoc false
 
 def main do
   [
