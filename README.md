@@ -50,7 +50,7 @@ by adding `hyphen8` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:hyphen8, "~> 0.1.0"}
+    {:hyphen8, "~> 0.1.5"}
   ]
 end
 ```

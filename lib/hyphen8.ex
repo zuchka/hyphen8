@@ -7,7 +7,7 @@ def start(string) do
   list = 
   String.split(string, ~r{\W}, trim: true) 
   |> Stream.filter(fn x -> String.valid?(x)end) 
-  |> Stream.chunk_every(250) 
+  |> Stream.chunk_every(5) 
   |> Enum.map(fn x -> Enum.join(x, " ")end)
 
   list
