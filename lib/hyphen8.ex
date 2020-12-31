@@ -3,7 +3,13 @@ defmodule Hyphen8 do
 
 @timeout 1000000
   
-def start(list) do
+def start(string) do
+  list = 
+  String.split(string, ~r{\W}, trim: true) 
+  |> Stream.filter(fn x -> String.valid?(x)end) 
+  |> Stream.chunk_every(250) 
+  |> Enum.map(fn x -> Enum.join(x, " ")end)
+
   list
   |> Enum.map(fn i -> async_call_square_root(i) end)
   |> Enum.map(fn task -> await_and_inspect(task) end)
