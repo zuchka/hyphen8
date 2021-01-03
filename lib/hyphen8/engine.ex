@@ -13,7 +13,8 @@ defmodule Hyphen8.Engine do
 
    def parse_words(string) do
        Keyword.new
-       |> Keyword.put_new(:words, String.split(string, ~r/\s|\\n|\\r|\\t|\W|_/, trim: true))
+       |> Keyword.put_new(:words, String.split(string, ~r/\s|\\n|\\r|\\t|\W|_/, trim: true) |> Enum.filter(fn x -> String.valid?(x)end)
+       )
    end
 
    def parse_characters(data) do

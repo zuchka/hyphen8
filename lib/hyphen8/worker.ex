@@ -9,9 +9,8 @@ defmodule Hyphen8.Worker do
       {:ok, nil}
     end
   
-    def handle_call({:square_root, x}, from, state) do
+    def handle_call({:hyphen8, chunk_of_words}, from, state) do
       IO.puts("process #{inspect(self())}: hyphenating \"#{inspect(from)}\"")
-    #   Process.sleep(1000)
-      {:reply, Hyphen8.Engine.main(x), state}
+      {:reply, Hyphen8.Engine.main(chunk_of_words), state}
     end
   end
