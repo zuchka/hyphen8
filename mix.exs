@@ -4,7 +4,7 @@ defmodule Hyphen8.MixProject do
   def project do
     [
       app: :hyphen8,
-      version: "0.1.5",
+      version: "0.1.6",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -40,7 +40,7 @@ defmodule Hyphen8.MixProject do
   end
 
   defp description() do
-    "A pure Elixir implementation of the Knuth-Liang Hyphenation Algorithm."
+    "A concurrent and pure-Elixir port of the Knuth-Liang Hyphenation Algorithm."
   end
 
   defp package() do

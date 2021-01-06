@@ -9,13 +9,17 @@ defmodule Hyphen8 do
     |> Stream.chunk_every(5)
     |> Enum.map(fn x -> Enum.join(x, " ")end)
 
+    return =
     list
     |> Enum.map(fn chunk_of_words -> async_call_hyphen8(chunk_of_words) end)
     |> Enum.map(fn task -> await_and_inspect(task) end)
     |> Enum.join(" ")
+
+    # apostrophes throw off the algorithm so the engine module strips them.
+    Regex.replace(~r{\ss\s}, return, "'s ")
   end
 
-  def async_call_hyphen8(chunk_of_words) do
+  defp async_call_hyphen8(chunk_of_words) do
     Task.async(fn ->
       :poolboy.transaction(
         :hyphen8_worker,
@@ -25,5 +29,5 @@ defmodule Hyphen8 do
     end)
   end
 
-  def await_and_inspect(task), do: task |> Task.await(@timeout)
+  defp await_and_inspect(task), do: task |> Task.await(@timeout)
 end

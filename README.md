@@ -6,19 +6,35 @@ Hyphen8 is a pure Elixir implementation of the Knuth-Liang Hyphenation Algorithm
 
 ## Usage
 
-Pass a string to `Hyphen8.Engine.main()`:
+Pass a string to `Hyphen8.start()`:
 
 ```command
-iex> Hyphen8.Engine.main("let's hyphenate containerization orchestration platform")
+iex> Hyphen8.start("let's hyphenate containerization orchestration platform")
+
+process #PID<0.226.0>: hyphenating "{#PID<0.232.0>, #Reference<0.1715096087.1034682369.71350>}"
+process #PID<0.225.0>: hyphenating "{#PID<0.233.0>, #Reference<0.1715096087.1034682369.71351>}"
+
 ```
 
-You will receive the hyphenated string:
+`Hyphen8` will begin spawning processes. Each new one will print its PID and reference number to the screen.
+
+You will then receive the hyphenated string:
 
 ```
-"let s hy-phen-ate con-tainer-iza-tion or-ches-tra-tion plat-form"
+"let's hy-phen-ate con-tainer-iza-tion or-ches-tra-tion plat-form"
 ```
 
-The current version will not reconstruct punctuation. To customize the string and word splitting, adjust the regular expressions in `Hyphen8.Engine.parse_words()` and `Hyphen8.Engine.parse_characters()`.
+The current version will not reconstruct sentence punctuation, newlines, or other meta-characters. Apostrophes are reconstructed but only naively.
+
+To customize the string and word splitting, adjust the regular expressions in `Hyphen8.Engine.parse_words()` and `Hyphen8.Engine.parse_characters()`. 
+
+## Performance Hacks
+
+To optimize for speed, you can adjust the size of your worker pool. Adjust the value for `:size` in `Hyphen8.Application.poolboy_config()` to resize the worker pool. 
+
+You can also adjust your string-chunking interval. Adjust the `String.chunk_every()` function in `Hyphen8.start()` to define how large or small a chunk each spawned process computes. Increasing this number can increase performance on very long strings. Alternately, increasing the chunk size well beyond your average string length can hurt performance. I suggest using Benchee and experimenting with combinations based on your use case.
+
+Another option is to rewrite `Hyphen8` so that it dynamically creates a worker pool based on a given input's size.
 
 ## History of the Knuth-Liang Algorithm
 
@@ -50,7 +66,7 @@ by adding `hyphen8` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:hyphen8, "~> 0.1.5"}
+    {:hyphen8, "~> 0.1.6"}
   ]
 end
 ```

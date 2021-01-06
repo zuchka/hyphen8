@@ -1,5 +1,6 @@
 defmodule Hyphen8.Worker do
-    use GenServer
+@moduledoc false
+  use GenServer
   
     def start_link(_) do
       GenServer.start_link(__MODULE__, nil)
