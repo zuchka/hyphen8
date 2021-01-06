@@ -18,7 +18,7 @@ defmodule Hyphen8 do
   def async_call_hyphen8(chunk_of_words) do
     Task.async(fn ->
       :poolboy.transaction(
-        :worker,
+        :hyphen8_worker,
         fn pid -> GenServer.call(pid, {:hyphen8, chunk_of_words}, 600000) end,
         @timeout
       )

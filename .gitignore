@@ -28,3 +28,6 @@ hyphen8-*.tar
 
 #
 .DS_Store
+
+##
+# .formatter.exs

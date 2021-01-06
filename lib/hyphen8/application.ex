@@ -5,7 +5,7 @@ defmodule Hyphen8.Application do
 
   defp poolboy_config do
     [
-      name: {:local, :worker},
+      name: {:local, :hyphen8_worker},
       worker_module: Hyphen8.Worker,
       size: 10,
       max_overflow: 2
@@ -14,7 +14,7 @@ defmodule Hyphen8.Application do
 
   def start(_type, _args) do
     children = [
-      :poolboy.child_spec(:worker, poolboy_config())
+      :poolboy.child_spec(:hyphen8_worker, poolboy_config())
     ]
 
     opts = [strategy: :one_for_one, name: Hyphen8.Supervisor]
