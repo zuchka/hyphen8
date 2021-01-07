@@ -34,7 +34,7 @@ To optimize for speed, you can adjust the size of your worker pool. Adjust the v
 
 You can also adjust your string-chunking interval. Adjust the `String.chunk_every()` function in `Hyphen8.start()` to define how large or small a chunk each spawned process computes. Increasing this number can increase performance on very long strings. Alternately, increasing the chunk size well beyond your average string length can hurt performance. I suggest using Benchee and experimenting with combinations based on your use case.
 
-Another option is to rewrite `Hyphen8` so that it dynamically creates a worker pool based on a given input's size.
+Another option is to rewrite `Hyphen8` so that it dynamically determines chunk size based on the given input.
 
 ## History of the Knuth-Liang Algorithm
 
