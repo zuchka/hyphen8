@@ -52,8 +52,6 @@ In the [official resource for Patgen](https://www.tug.org/texlive/devsrc/Build/s
 
 Hyphen8 uses Liang's original tables. There is a lot of room for optimization in this Elixir port, but the basic implementation is there.
 
-There is a large sample output in this repo. [View this hyphenated version of _Moby-Dick_](https://github.com/zuchka/hyphen8/blob/main/moby-dick-hyphenated.txt). The input was [the unabridged, UTF-8 copy of _Moby Dick_ on Project Gutenberg](http://www.gutenberg.org/files/2701/2701-0.txt). This file is Hyphen8's raw output.
-
 ## Additional Resources
 
 - [Links page for Patgen-related content](https://www.tug.org/docs/liang/)
